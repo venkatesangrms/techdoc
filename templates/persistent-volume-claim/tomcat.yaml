@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: tomcat-persistent-volume
   labels:
-    type: local
+    type: local-tomcat
 spec:
   storageClassName: manual
   capacity:
@@ -18,7 +18,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: tomcat-persistent-volume-claim
   labels:
-    type: local
+    type: local-tomcat
     app: tomcat
 spec:
   storageClassName: manual

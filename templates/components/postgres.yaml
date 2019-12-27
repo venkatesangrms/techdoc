@@ -67,9 +67,9 @@ spec:
       - name: postgres-persistent-volume
         persistentVolumeClaim:
           claimName: postgres-persistent-volume-claim
-      - name: postgres-init-persistent-volume
-        persistentVolumeClaim:
-          claimName: postgres-init-persistent-volume-claim
+#      - name: postgres-init-persistent-volume
+#        persistentVolumeClaim:
+#          claimName: postgres-init-persistent-volume-claim
       initContainers:
       - name: postgres-data-init
         image: {{ .Values.postgres.image.postgres_init }} 

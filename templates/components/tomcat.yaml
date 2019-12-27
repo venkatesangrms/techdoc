@@ -33,7 +33,7 @@ spec:
         name: tomcat
         ports:
         - containerPort: {{ .Values.tomcat.ports.targetPort }}
-          name: postgres-port
+          name: tomcat-port
         volumeMounts:
         - name: tomcat-persistent-volume
           mountPath: /opt/reports
