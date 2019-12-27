@@ -6,7 +6,7 @@ metadata:
     app: postgres
 spec:
   ports:
-  - port: 5432
+  - port: {{ .Values.postgres.ports.port }}
     name: postgres
   clusterIP: None
   selector:
@@ -30,7 +30,7 @@ spec:
         db: postgres
     spec:
       containers:
-      - image: {{ .Values.image.POSTGRES }}
+      - image: {{ .Values.postgres.image.postgres }}
         name: postgres
         env:
         - name: POSTGRES_DB
@@ -49,7 +49,7 @@ spec:
               name: postgres-secrets
               key: password
         ports:
-        - containerPort: 5432
+        - containerPort: {{ .Values.postgres.ports.port }}
           name: postgres-port
         volumeMounts:
         - name: postgres-persistent-volume
@@ -58,18 +58,18 @@ spec:
           mountPath: /docker-entrypoint-initdb.d
         resources:
           requests:
-            memory: "3Gi"
-            cpu: "500m"
+            memory: {{ .Values.postgres.resources.requests.memory }}Gi
+            cpu: {{ .Values.postgres.resources.requests.cpu }}m
           limits:
-            memory: "5Gi"
-            cpu: "1000m"
+            memory: {{ .Values.postgres.resources.limits.memory }}Gi
+            cpu: {{ .Values.postgres.resources.limits.cpu }}m
       volumes:
       - name: postgres-persistent-volume
         persistentVolumeClaim:
           claimName: postgres-persistent-volume-claim
       initContainers:
       - name: postgres-data-init
-        image: {{ .Values.image.POSTGRES_INIT }} 
+        image: {{ .Values.postgres.image.postgres_init }} 
         volumeMounts:
         - name: postgres-persistent-volume
           mountPath: /docker-entrypoint-initdb.d

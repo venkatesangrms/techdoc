@@ -1,7 +1,3 @@
-image:
-  TOMCAT: metricstreaminc/tech-doc:tomcat-k8s-2.0
-  POSTGRES_INIT: metricstreaminc/tech-doc:postgres-init-1.0
-  POSTGRES: postgres:11.4
 tomcat:
   image:
     tomcat: metricstreaminc/tech-doc:tomcat-k8s-2.0
@@ -20,4 +16,16 @@ tomcat:
     limits:
       memory: 3
       cpu: 1
-
+postgres:
+  image:
+    postgres: postgres:11.4
+    postgres_init: metricstreaminc/tech-doc:postgres-init-1.0
+  ports:
+    port: 5432
+  resources:
+    requests:
+      memory: 3
+      cpu: 500
+    limits:
+      memory: 5
+      cpu: 1
