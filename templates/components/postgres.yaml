@@ -56,7 +56,6 @@ spec:
         volumeMounts:
         - name: postgres-persistent-volume
           mountPath: /var/lib/postgresql/data
-          subPath: data
 #        - name: postgres-persistent-volume
 #          mountPath: /db-init-script
         resources:
