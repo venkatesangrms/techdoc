@@ -57,3 +57,10 @@ spec:
       - name: tomcat-persistent-volume
         persistentVolumeClaim:
           claimName: tomcat-persistent-volume-claim
+      initContainers:
+      - name: tomcat-init
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /opt/reports"]
+        volumeMounts:
+        - name: tomcat-persistent-volume
+          mountPath: /opt/reports
