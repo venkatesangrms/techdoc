@@ -1,6 +1,36 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  name: postgres-init-persistent-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 50Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ .Values.postgres.hostPath_init }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-init-persistent-volume-claim
+  labels:
+    type: local
+    db: postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: postgres-persistent-volume
   labels:
     type: local

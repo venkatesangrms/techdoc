@@ -54,7 +54,7 @@ spec:
         volumeMounts:
         - name: postgres-persistent-volume
           mountPath: /var/lib/postgresql/data
-        - name: postgres-persistent-volume
+        - name: postgres-init-persistent-volume
           mountPath: /docker-entrypoint-initdb.d
         resources:
           requests:
@@ -67,9 +67,12 @@ spec:
       - name: postgres-persistent-volume
         persistentVolumeClaim:
           claimName: postgres-persistent-volume-claim
+      - name: postgres-init-persistent-volume
+        persistentVolumeClaim:
+          claimName: postgres-init-persistent-volume-claim
       initContainers:
       - name: postgres-data-init
         image: {{ .Values.postgres.image.postgres_init }} 
         volumeMounts:
-        - name: postgres-persistent-volume
+        - name: postgres-init-persistent-volume
           mountPath: /docker-entrypoint-initdb.d
