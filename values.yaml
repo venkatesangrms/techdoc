@@ -30,5 +30,5 @@ postgres:
     limits:
       memory: 5Gi
       cpu: 1
-  hostPath: "/home/kairos/grv/techdoc/postgres/data/"
+  hostPath: "/data/psql"
   hostPath_init: "/home/kairos/grv/techdoc/postgres/init/"
