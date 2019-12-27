@@ -2,4 +2,15 @@ image:
   TOMCAT: metricstreaminc/tech-doc:tomcat-k8s-2.0
   POSTGRES_INIT: metricstreaminc/tech-doc:postgres-init-1.0
   POSTGRES: postgres:11.4
+tomcat:
+  image:
+    tomcat: metricstreaminc/tech-doc:tomcat-k8s-2.0
+  ports:
+    port: 443
+    targetPort: 8443
+    nodePort: 30001
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true   
 

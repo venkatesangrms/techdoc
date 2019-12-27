@@ -6,9 +6,9 @@ spec:
   ports:
     - name: tomcat-service-port
       protocol: TCP
-      port: 443
-      targetPort: 8443
-      nodePort: 30001
+      port: {{ .Values.tomcat.ports.port }}
+      targetPort: {{ .Values.tomcat.ports.targetPort }}
+      nodePort: {{ .Values.tomcat.ports.nodePort }}
   selector:
     app: tomcat
   type: NodePort
@@ -29,18 +29,18 @@ spec:
         app: tomcat
     spec:
       containers:
-      - image: {{ .Values.image.TOMCAT }}
+      - image: {{ .Values.tomcat.image.tomcat }}
         name: tomcat
         ports:
-        - containerPort: 8443
+        - containerPort: {{ .Values.tomcat.ports.targetPort }}
           name: postgres-port
         volumeMounts:
         - name: tomcat-persistent-volume
           mountPath: /opt/reports
         securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          runAsNonRoot: true
+          runAsUser: {{ .Values.tomcat.securityContext.runAsUser }}
+          runAsGroup: {{ .Values.tomcat.securityContext.runAsGroup }}
+          runAsNonRoot: {{ .Values.tomcat.securityContext.runAsNonRoot }}
       volumes:
       - name: tomcat-persistent-volume
         persistentVolumeClaim:
