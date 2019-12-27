@@ -32,22 +32,24 @@ spec:
       containers:
       - image: {{ .Values.postgres.image.postgres }}
         name: postgres
-        env:
-        - name: POSTGRES_DB
-          valueFrom:
-            secretKeyRef:
-              name: postgres-secrets
-              key: database
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: postgres-secrets
-              key: username
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgres-secrets
-              key: password
+#        env:
+#        - name: POSTGRES_DB
+#          valueFrom:
+#            secretKeyRef:
+#              name: postgres-secrets
+#              key: database
+#        - name: POSTGRES_USER
+#          valueFrom:
+#            secretKeyRef:
+#              name: postgres-secrets
+#              key: username
+#        - name: POSTGRES_PASSWORD
+#          valueFrom:
+#            secretKeyRef:
+#              name: postgres-secrets
+#              key: password
+#        - name: PGDATA
+#          value: /var/lib/postgresql/data/pgdata
         ports:
         - containerPort: {{ .Values.postgres.ports.port }}
           name: postgres-port
