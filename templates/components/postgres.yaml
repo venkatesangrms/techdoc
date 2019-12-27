@@ -52,8 +52,8 @@ spec:
         - containerPort: {{ .Values.postgres.ports.port }}
           name: postgres-port
         volumeMounts:
-#        - name: postgres-persistent-volume
-#          mountPath: /var/lib/postgresql/data
+        - name: postgres-persistent-volume
+          mountPath: /var/lib/postgresql/data
         - name: postgres-persistent-volume
           mountPath: /docker-entrypoint-initdb.d
         resources:
