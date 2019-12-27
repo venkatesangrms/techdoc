@@ -58,11 +58,11 @@ spec:
           mountPath: /docker-entrypoint-initdb.d
         resources:
           requests:
-            memory: {{ .Values.postgres.resources.requests.memory }}Gi
-            cpu: {{ .Values.postgres.resources.requests.cpu }}m
+            memory: {{ .Values.postgres.resources.requests.memory }}
+            cpu: {{ .Values.postgres.resources.requests.cpu }}
           limits:
-            memory: {{ .Values.postgres.resources.limits.memory }}Gi
-            cpu: {{ .Values.postgres.resources.limits.cpu }}m
+            memory: {{ .Values.postgres.resources.limits.memory }}
+            cpu: {{ .Values.postgres.resources.limits.cpu }}
       volumes:
       - name: postgres-persistent-volume
         persistentVolumeClaim:

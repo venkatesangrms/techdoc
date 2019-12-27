@@ -43,11 +43,11 @@ spec:
           runAsNonRoot: {{ .Values.tomcat.securityContext.runAsNonRoot }}
         resources:
           requests:
-            memory: {{ .Values.tomcat.resources.requests.memory }}Gi
-            cpu: {{ .Values.tomcat.resources.requests.cpu }}m
+            memory: {{ .Values.tomcat.resources.requests.memory }}
+            cpu: {{ .Values.tomcat.resources.requests.cpu }}
           limits:
-            memory: {{ .Values.tomcat.resources.limits.memory }}Gi
-            cpu: {{ .Values.tomcat.resources.limits.cpu }}m
+            memory: {{ .Values.tomcat.resources.limits.memory }}
+            cpu: {{ .Values.tomcat.resources.limits.cpu }}
       volumes:
       - name: tomcat-persistent-volume
         persistentVolumeClaim:

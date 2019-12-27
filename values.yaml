@@ -11,11 +11,12 @@ tomcat:
     runAsNonRoot: true   
   resources: 
     requests: 
-      memory: 2
-      cpu: 500
+      memory: 2Gi
+      cpu: 500m
     limits:
-      memory: 3
+      memory: 3Gi
       cpu: 1
+  hostPath: "/home/kairos/grv/techdoc/tomcat/data/"
 postgres:
   image:
     postgres: postgres:11.4
@@ -24,8 +25,9 @@ postgres:
     port: 5432
   resources:
     requests:
-      memory: 3
-      cpu: 500
+      memory: 3Gi
+      cpu: 500m
     limits:
-      memory: 5
+      memory: 5Gi
       cpu: 1
+  hostPath: "/home/kairos/grv/techdoc/postgres/data/"

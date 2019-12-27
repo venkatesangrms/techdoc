@@ -7,11 +7,11 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 10Gi
+    storage: {{ .Values.tomcat.resources.limits.memory }}
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/kairos/grv/techdoc/tomcat/data/"
+    path: {{ .Values.tomcat.hostPath }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -26,5 +26,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: {{ .Values.tomcat.resources.requests.memory }}
 
