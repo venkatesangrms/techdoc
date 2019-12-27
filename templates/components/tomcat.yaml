@@ -41,6 +41,13 @@ spec:
           runAsUser: {{ .Values.tomcat.securityContext.runAsUser }}
           runAsGroup: {{ .Values.tomcat.securityContext.runAsGroup }}
           runAsNonRoot: {{ .Values.tomcat.securityContext.runAsNonRoot }}
+        resources:
+          requests:
+            memory: {{ .Values.tomcat.resources.requests.memory }}Gi
+            cpu: {{ .Values.tomcat.resources.requests.cpu }}m
+          limits:
+            memory: {{ .Values.tomcat.resources.requests.memory }}Gi
+            cpu: {{ .Values.tomcat.resources.requests.cpu }}m
       volumes:
       - name: tomcat-persistent-volume
         persistentVolumeClaim:

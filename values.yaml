@@ -13,4 +13,11 @@ tomcat:
     runAsUser: 1000
     runAsGroup: 1000
     runAsNonRoot: true   
+  resources: 
+    requests: 
+      memory: 2
+      cpu: 500
+    limits:
+      memory: 3
+      cpu: 1
 
