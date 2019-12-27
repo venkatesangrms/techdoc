@@ -31,6 +31,8 @@ spec:
       containers:
       - image: {{ .Values.tomcat.image.tomcat }}
         name: tomcat
+        securityContext:
+          fsGroup: 1000
         env:
         - name: TZ
           value: Asia/Kolkata 
