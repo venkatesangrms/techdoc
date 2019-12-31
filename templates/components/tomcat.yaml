@@ -42,6 +42,9 @@ spec:
         volumeMounts:
         - name: tomcat-persistent-volume
           mountPath: /opt/reports
+        - name: tomcat-configmap
+          mountPath: /usr/local/tomcat/conf/server.xml
+          subPath: server.xml
         securityContext:
           runAsUser: {{ .Values.tomcat.securityContext.runAsUser }}
           runAsGroup: {{ .Values.tomcat.securityContext.runAsGroup }}
@@ -57,6 +60,9 @@ spec:
       - name: tomcat-persistent-volume
         persistentVolumeClaim:
           claimName: tomcat-persistent-volume-claim
+      - name: tomcat-configmap
+        configMap:
+          name: tomcat-config
       initContainers:
       - name: tomcat-init
         image: busybox
